@@ -64,11 +64,12 @@ function renderGroupFilter() {
   });
 }
 
-/* 一覧表示 */
+/* 保存 */
 function saveFanclubs() {
   localStorage.setItem("fanclubs", JSON.stringify(fanclubs));
 }
 
+/* 一覧表示 */
 function displayFanclubs() {
   fcList.innerHTML = "";
 
@@ -86,7 +87,8 @@ function displayFanclubs() {
     .forEach((fc, index) => {
       const card = document.createElement("div");
       card.className = "card list-card";
-      card.onclick = () => openDetail(index);
+
+      card.addEventListener("click", () => openDetail(index));
 
       card.innerHTML = `
         <div class="card-header">
@@ -300,12 +302,14 @@ function clearForm() {
 function showAddPage() {
   document.getElementById("addPage").style.display = "block";
   document.getElementById("listPage").style.display = "none";
+  window.scrollTo(0, 0);
 }
 
 function showListPage() {
   document.getElementById("addPage").style.display = "none";
   document.getElementById("listPage").style.display = "block";
   displayFanclubs();
+  window.scrollTo(0, 0);
 }
 
 /* 検索入力イベント */

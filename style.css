@@ -47,8 +47,9 @@ body {
     font-family: "Hiragino Maru Gothic ProN", sans-serif;
     background: var(--bg);
     margin: 0;
-    padding: 20px;
+    padding: 16px;
     color: #444;
+    box-sizing: border-box;
 }
 
 /* テーマボタン */
@@ -63,6 +64,7 @@ body {
     border-radius: 50%;
     font-size: 18px;
     cursor: pointer;
+    z-index: 999;
 }
 
 /* テーマパネル */
@@ -77,6 +79,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    z-index: 999;
 }
 
 .theme-option {
@@ -91,24 +94,23 @@ body {
 /* タイトル */
 .title {
     text-align: center;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: bold;
     color: var(--accent);
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 /* ナビ（2分割ボタン） */
 .nav {
+    width: 100%;
     max-width: 420px;
     margin: 0 auto 15px;
     display: flex;
-    gap: 0;
     border-radius: 14px;
     overflow: hidden;
     border: 2px solid var(--border);
 }
 
-/* 2つのボタンを横にぴったり */
 .nav button {
     flex: 1;
     background: var(--main);
@@ -121,31 +123,29 @@ body {
     transition: 0.2s ease;
 }
 
-/* 左右の境界線 */
 .nav button + button {
     border-left: 2px solid var(--border);
 }
 
-/* ホバー */
 .nav button:hover {
     background: var(--accent);
 }
 
-/* 押したとき */
 .nav button:active {
     transform: scale(0.97);
 }
 
-
 /* 登録カード */
 .card-form {
+    width: 100%;
     max-width: 420px;
     margin: 0 auto;
-    padding: 22px 24px;
+    padding: 20px;
     background: white;
-    border-radius: 30px;
+    border-radius: 24px;
     border: 3px solid var(--border);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    box-sizing: border-box;
 }
 
 label {
@@ -159,7 +159,6 @@ label {
 
 .card-form input {
     width: 100%;
-    max-width: 360px;
     height: 42px;
     padding: 8px 12px;
     border: 2px solid var(--border);
@@ -168,9 +167,6 @@ label {
     background: #fff;
     font-size: 14px;
     box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
 }
 
 /* パスワード欄 */
@@ -180,8 +176,8 @@ label {
 
 .password-wrapper button {
     position: absolute;
-    right: calc(48.5% - 180px);
-    top: 1%;
+    right: -4px;
+    top: 2%;
     transform: translateY(-50%);
     background: var(--main);
     color: white;
@@ -201,7 +197,6 @@ label {
     border-radius: 22px;
     cursor: pointer;
     display: block;
-    width: auto;
     font-size: 15px;
     font-weight: bold;
 }
@@ -220,6 +215,7 @@ label {
 
 /* グループ絞り込み */
 .group-filter {
+    width: 100%;
     max-width: 420px;
     margin: 0 auto 12px;
     padding: 8px 12px;
@@ -231,74 +227,37 @@ label {
     gap: 10px;
 }
 
-.group-filter label {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 13px;
-    color: var(--accent);
-    cursor: pointer;
-}
-
-.group-filter input[type="radio"] {
-    accent-color: var(--main);
-    transform: scale(1.2);
-}
-
 /* 一覧カード */
-.list-card {
-    background: linear-gradient(135deg, white, var(--bg));
-    border-radius: 30px;
-    padding: 0 16px 14px 16px;
-    margin: 15px auto;
-    border: 3px solid var(--border);
-    max-width: 500px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-}
-
-.list-card:hover {
-    animation: poyon 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-}
-
-@keyframes poyon {
-  0%   { transform: scale(1); }
-  60%  { transform: scale(0.95); }
-  100% { transform: scale(1); }
-}
-
-/* 詳細カード */
+.list-card,
 .detail-card {
-    background: linear-gradient(135deg, white, var(--bg));
-    border-radius: 30px;
-    padding: 18px;
+    width: 100%;
+    max-width: 420px;
     margin: 15px auto;
+    padding: 16px;
+    background: linear-gradient(135deg, white, var(--bg));
+    border-radius: 24px;
     border: 3px solid var(--border);
-    max-width: 500px;
     box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    box-sizing: border-box;
 }
 
 /* ヘッダー */
 .card-header {
     display: flex;
     align-items: center;
-    gap: 30px;
-    margin-bottom: 0;
+    gap: 16px;
 }
 
 .card-header h3 {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: var(--accent);
-    border-bottom: 4px double var(--accent);
-    display: inline-block;
+    border-bottom: 3px double var(--accent);
     padding-bottom: 4px;
-    text-shadow: 0 0 6px rgba(255,255,255,0.6);
 }
 
 .memberNo-inline {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: var(--accent);
 }
@@ -307,7 +266,7 @@ label {
 .sort-area {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 12px;
 }
 
@@ -315,73 +274,52 @@ label {
     background: var(--main);
     color: white;
     border: none;
-    padding: 6px 14px;
+    padding: 6px 12px;
     border-radius: 16px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 13px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-    transition: 0.2s ease;
+    font-size: 12px;
 }
 
-.sort-area .sort-btn.active {
-    background: var(--accent);
-    color: white;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-    transform: translateY(-2px);
-}
-
-/* 編集・削除ボタン */
+/* 編集・削除ボタン（かわいい版） */
 .btn-area {
     margin-top: 10px;
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .btn-area button {
-    width: 80px;
-    padding: 8px 0;
+    width: 90px;
+    padding: 10px 0;
     border: none;
-    border-radius: 18px;
+    border-radius: 20px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
 }
 
+/* 編集ボタン（メインカラー） */
 .btn-area button:nth-child(1) {
     background: var(--main);
     color: white;
 }
 
+/* 削除ボタン（やさしいピンク） */
 .btn-area button:nth-child(2) {
-    background: color-mix(in srgb, var(--border) 80%, white);
+    background: #ffd1e8;
     color: var(--accent);
 }
 
-/* 表示・戻るボタン（かわいい版） */
-.detail-card button,
-.password-wrapper button {
-    background: var(--main);
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 18px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-    transition: 0.2s ease;
-}
-
-.detail-card button:hover,
-.password-wrapper button:hover {
+/* ホバー時のふわっと */
+.btn-area button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.18);
 }
 
-.detail-card button:active,
-.password-wrapper button:active {
+/* 押したときのぽよん */
+.btn-area button:active {
     transform: scale(0.96);
 }
 
