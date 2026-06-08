@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>FC情報管理アプリ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff7fbc">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- テーマボタン -->
+  <button id="themeBtn" class="theme-btn">🎨</button>
+
+  <!-- テーマパネル -->
+  <div id="themePanel" class="theme-panel hide">
+    <div class="theme-option" data-theme="pink"></div>
+    <div class="theme-option" data-theme="blue"></div>
+    <div class="theme-option" data-theme="green"></div>
+    <div class="theme-option" data-theme="brown"></div>
+    <div class="theme-option" data-theme="mono"></div>
+    <div class="theme-option" data-theme="orange"></div>
+    <div class="theme-option" data-theme="lavender"></div>
+    <div class="theme-option" data-theme="mint"></div>
+  </div>
+
+  <h1 class="title">FC情報管理アプリ</h1>
+
+  <!-- ナビ -->
+  <div class="nav">
+    <button onclick="showAddPage()">登録</button>
+    <button onclick="showListPage()">一覧</button>
+  </div>
+
+  <!-- 登録画面 -->
+  <div id="addPage" class="page card-form">
+
+    <label>グループ名</label>
+    <input type="text" id="groupName">
+
+    <label>担当</label>
+    <input type="text" id="memberName">
+
+    <label>年会費</label>
+    <input type="number" id="annualFee">
+
+    <label>会員番号</label>
+    <input type="text" id="memberNo">
+
+    <label>住所</label>
+    <input type="text" id="address">
+
+    <label>電話番号</label>
+    <input type="tel" id="phone">
+
+    <label>メールアドレス</label>
+    <input type="email" id="email">
+
+    <label>パスワード</label>
+    <div class="password-wrapper">
+      <input type="password" id="password">
+      <button type="button" id="togglePass" onclick="togglePassword()">表示</button>
+    </div>
+
+    <label>更新期限</label>
+    <input type="date" id="expireDate">
+
+    <button onclick="addFanclub()">保存</button>
+  </div>
+
+  <!-- 一覧画面 -->
+  <div id="listPage" class="page hide">
+
+    <input type="text" id="searchInput" class="search-box" placeholder="検索 🔍">
+
+    <!-- グループ絞り込み（ラジオ） -->
+    <div id="groupFilter" class="group-filter"></div>
+
+    <!-- ソートボタン横並び -->
+    <div class="sort-area">
+      <button class="sort-btn" onclick="sortByGroupName()">グループ名順 ↑</button>
+      <button class="sort-btn" onclick="sortByExpireDate()">更新期限順 ↑</button>
+      <button class="sort-btn" onclick="sortByMemberNo()">会員番号順 ↑</button>
+    </div>
+
+    <div id="fcList"></div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("service-worker.js")
+          .catch(err => console.error("SW registration failed:", err));
+      });
+    }
+  </script>
+
+</body>
+</html>
