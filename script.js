@@ -180,7 +180,7 @@ function sortByMemberNo() {
   displayFanclubs();
 }
 
-/* 詳細画面 */
+/* ★★★ 詳細画面（横並び対応版） ★★★ */
 function openDetail(index) {
   const fc = fanclubs[index];
 
@@ -190,35 +190,39 @@ function openDetail(index) {
         <h3>${fc.groupName || ""}</h3>
         <span class="memberNo-inline">${fc.memberNo || ""}</span>
       </div>
+
       <p>担当：${fc.memberName || ""}</p>
       <p>年会費：${fc.annualFee || ""}円</p>
       <p>会員番号：${fc.memberNo || ""}</p>
       <p>住所：${fc.address || ""}</p>
       <p>電話番号：${fc.phone || ""}</p>
       <p>メール：${fc.email || ""}</p>
-      <p>
-        パスワード：
-        <span id="pw-real">＊＊＊＊</span>
-        <button onclick="toggleDetailPassword('${fc.password || ""}')">表示</button>
-      </p>
+
+      <!-- ★ パスワード横並び ★ -->
+      <div class="detail-password-row">
+        <span id="pw-real">パスワード：${"＊".repeat((fc.password || "").length)}</span>
+        <button id="toggleDetailPasswordBtn">表示</button>
+      </div>
+
       <p>更新期限：${fc.expireDate || ""}</p>
+
       <button onclick="showListPage()">戻る</button>
     </div>
   `;
-}
 
-/* 詳細画面のパスワード表示 */
-function toggleDetailPassword(password) {
-  const span = document.getElementById("pw-real");
-  const btn = event.target;
+  // 表示/非表示切替
+  document.getElementById("toggleDetailPasswordBtn").onclick = () => {
+    const span = document.getElementById("pw-real");
+    const btn = document.getElementById("toggleDetailPasswordBtn");
 
-  if (span.textContent === "＊＊＊＊") {
-    span.textContent = password;
-    btn.textContent = "非表示";
-  } else {
-    span.textContent = "＊＊＊＊";
-    btn.textContent = "表示";
-  }
+    if (span.textContent.includes("＊")) {
+      span.textContent = "パスワード：" + (fc.password || "");
+      btn.textContent = "非表示";
+    } else {
+      span.textContent = "パスワード：" + "＊".repeat((fc.password || "").length);
+      btn.textContent = "表示";
+    }
+  };
 }
 
 /* 登録・編集 */

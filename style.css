@@ -169,22 +169,37 @@ label {
     box-sizing: border-box;
 }
 
-/* パスワード欄 */
+/* パスワード欄（横並び） */
 .password-wrapper {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.password-wrapper input {
+    flex: 1;
 }
 
 .password-wrapper button {
-    position: absolute;
-    right: -4px;
-    top: 2%;
-    transform: translateY(-50%);
     background: var(--main);
     color: white;
     border: none;
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 18px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    transition: 0.2s ease;
+}
+
+.password-wrapper button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.18);
+}
+
+.password-wrapper button:active {
+    transform: scale(0.96);
 }
 
 /* 保存ボタン */
@@ -281,7 +296,7 @@ label {
     font-size: 12px;
 }
 
-/* 編集・削除ボタン（かわいい版） */
+/* 編集・削除ボタン */
 .btn-area {
     margin-top: 10px;
     display: flex;
@@ -300,26 +315,81 @@ label {
     box-shadow: 0 3px 6px rgba(0,0,0,0.12);
 }
 
-/* 編集ボタン（メインカラー） */
 .btn-area button:nth-child(1) {
     background: var(--main);
     color: white;
 }
 
-/* 削除ボタン（やさしいピンク） */
 .btn-area button:nth-child(2) {
-    background: #ffd1e8;
+    background: var(--border);
     color: var(--accent);
 }
 
-/* ホバー時のふわっと */
 .btn-area button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 10px rgba(0,0,0,0.18);
 }
 
-/* 押したときのぽよん */
 .btn-area button:active {
+    transform: scale(0.96);
+}
+
+/* 戻るボタン（詳細画面） */
+.detail-card button {
+    background: var(--main);
+    color: white;
+    border: none;
+    padding: 10px 26px;
+    border-radius: 22px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto 0;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    transition: 0.2s ease;
+}
+
+.detail-card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.18);
+}
+
+.detail-card button:active {
+    transform: scale(0.96);
+}
+
+/* ★ 詳細画面：パスワード横並び ★ */
+.detail-password-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0;
+}
+
+.detail-password-row span {
+    font-size: 14px;
+}
+
+.detail-password-row button {
+    background: var(--main);
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    transition: 0.2s ease;
+}
+
+.detail-password-row button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.18);
+}
+
+.detail-password-row button:active {
     transform: scale(0.96);
 }
 
