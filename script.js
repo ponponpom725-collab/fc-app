@@ -180,7 +180,7 @@ function sortByMemberNo() {
   displayFanclubs();
 }
 
-/* ★★★ 詳細画面（横並び対応版） ★★★ */
+/* ★ 詳細画面（あなたの新しい順番に完全対応） */
 function openDetail(index) {
   const fc = fanclubs[index];
 
@@ -192,25 +192,24 @@ function openDetail(index) {
       </div>
 
       <p>担当：${fc.memberName || ""}</p>
-      <p>年会費：${fc.annualFee || ""}円</p>
       <p>会員番号：${fc.memberNo || ""}</p>
+      <p>氏名：${fc.realName || ""}</p>
       <p>住所：${fc.address || ""}</p>
       <p>電話番号：${fc.phone || ""}</p>
       <p>メール：${fc.email || ""}</p>
 
-      <!-- ★ パスワード横並び ★ -->
       <div class="detail-password-row">
         <span id="pw-real">パスワード：${"＊".repeat((fc.password || "").length)}</span>
         <button id="toggleDetailPasswordBtn">表示</button>
       </div>
 
       <p>更新期限：${fc.expireDate || ""}</p>
+      <p>年会費：${fc.annualFee || ""}円</p>
 
       <button onclick="showListPage()">戻る</button>
     </div>
   `;
 
-  // 表示/非表示切替
   document.getElementById("toggleDetailPasswordBtn").onclick = () => {
     const span = document.getElementById("pw-real");
     const btn = document.getElementById("toggleDetailPasswordBtn");
@@ -230,13 +229,14 @@ function addFanclub() {
   const data = {
     groupName: document.getElementById("groupName").value,
     memberName: document.getElementById("memberName").value,
-    annualFee: document.getElementById("annualFee").value,
     memberNo: document.getElementById("memberNo").value,
+    realName: document.getElementById("realName").value,
     address: document.getElementById("address").value,
     phone: document.getElementById("phone").value,
     email: document.getElementById("email").value,
     password: document.getElementById("password").value,
-    expireDate: document.getElementById("expireDate").value
+    expireDate: document.getElementById("expireDate").value,
+    annualFee: document.getElementById("annualFee").value
   };
 
   if (!data.groupName) {
@@ -276,13 +276,14 @@ function editFanclub(index) {
 
   document.getElementById("groupName").value = fc.groupName;
   document.getElementById("memberName").value = fc.memberName;
-  document.getElementById("annualFee").value = fc.annualFee;
   document.getElementById("memberNo").value = fc.memberNo;
+  document.getElementById("realName").value = fc.realName;
   document.getElementById("address").value = fc.address;
   document.getElementById("phone").value = fc.phone;
   document.getElementById("email").value = fc.email;
   document.getElementById("password").value = fc.password;
   document.getElementById("expireDate").value = fc.expireDate;
+  document.getElementById("annualFee").value = fc.annualFee;
 
   editIndex = index;
 
@@ -293,13 +294,14 @@ function editFanclub(index) {
 function clearForm() {
   document.getElementById("groupName").value = "";
   document.getElementById("memberName").value = "";
-  document.getElementById("annualFee").value = "";
   document.getElementById("memberNo").value = "";
+  document.getElementById("realName").value = "";
   document.getElementById("address").value = "";
   document.getElementById("phone").value = "";
   document.getElementById("email").value = "";
   document.getElementById("password").value = "";
   document.getElementById("expireDate").value = "";
+  document.getElementById("annualFee").value = "";
 }
 
 /* 画面切り替え */

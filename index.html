@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <title>FC情報管理アプリ</title>
 
-  <!-- スマホ最適化（超重要） -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta name="theme-color" content="#ff7fbc">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-180.png">
@@ -14,10 +12,8 @@
 </head>
 <body>
 
-  <!-- テーマボタン -->
   <button id="themeBtn" class="theme-btn">🎨</button>
 
-  <!-- テーマパネル -->
   <div id="themePanel" class="theme-panel hide">
     <div class="theme-option" data-theme="pink"></div>
     <div class="theme-option" data-theme="blue"></div>
@@ -31,7 +27,6 @@
 
   <h1 class="title">FC情報管理アプリ</h1>
 
-  <!-- ナビ -->
   <div class="nav">
     <button onclick="showAddPage()">登録</button>
     <button onclick="showListPage()">一覧</button>
@@ -46,11 +41,11 @@
     <label>担当</label>
     <input type="text" id="memberName">
 
-    <label>年会費</label>
-    <input type="number" id="annualFee">
-
     <label>会員番号</label>
     <input type="text" id="memberNo">
+
+    <label>氏名</label>
+    <input type="text" id="realName">
 
     <label>住所</label>
     <input type="text" id="address">
@@ -70,6 +65,9 @@
     <label>更新期限</label>
     <input type="date" id="expireDate">
 
+    <label>年会費</label>
+    <input type="number" id="annualFee">
+
     <button onclick="addFanclub()">保存</button>
   </div>
 
@@ -78,10 +76,8 @@
 
     <input type="text" id="searchInput" class="search-box" placeholder="検索 🔍">
 
-    <!-- グループ絞り込み（ラジオ） -->
     <div id="groupFilter" class="group-filter"></div>
 
-    <!-- ソートボタン横並び -->
     <div class="sort-area">
       <button class="sort-btn" onclick="sortByGroupName()">グループ名順 ↑</button>
       <button class="sort-btn" onclick="sortByExpireDate()">更新期限順 ↑</button>
